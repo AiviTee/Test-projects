@@ -34,10 +34,10 @@ def get_or_create_location(db: Session, city: str, country: str, region: Optiona
     return create_location(db, schemas.LocationBase(city=city, country=country, region=region))
 
 def create_job(db: Session, job: schemas.JobCreate) -> models.Job:
-    # создаём/находим навыки
+    
     db_skills = [get_or_create_skill(db, name) for name in job.skill_names]
 
-    # создаём/находим локацию (если передана)
+    
     db_locations = []
     if job.location_data:
         loc = get_or_create_location(
