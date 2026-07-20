@@ -27,7 +27,7 @@ class JobCreate(BaseModel):
     salary_max: Optional[float] = None
     remote: bool = False
     skill_names: List[str] = []
-    location_data: Optional[LocationBase] = None  # один основной город
+    location_data: Optional[LocationBase] = None 
 
 class JobResponse(BaseModel):
     id: int
@@ -43,11 +43,11 @@ class JobResponse(BaseModel):
         from_attributes = True
 
 class JobFilter(BaseModel):
-    query: Optional[str] = None       # поиск по title/description
+    query: Optional[str] = None       
     min_salary: Optional[float] = None
     max_salary: Optional[float] = None
     remote: Optional[bool] = None
-    skill: Optional[str] = None        # фильтр по одному навыку
+    skill: Optional[str] = None        
     city: Optional[str] = None
     country: Optional[str] = None
     page: int = 1
