@@ -18,7 +18,7 @@ app = FastAPI()
 def get_jobs():
     db = SessionLocal()
     try:
-        jobs = db.query(Job).limit(20).all()  # сначала вернём 20, чтобы не спамить
+        jobs = db.query(Job).limit(20).all()  
         return [
             {
                 "id": j.id,
