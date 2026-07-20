@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship, declarative_base
 
 Base = declarative_base()
 
-# Таблицы many-to-many
+
 job_location = Table(
     "job_location",
     Base.metadata,
@@ -24,7 +24,7 @@ class Location(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
 
-    # У локации есть список вакансий -> свойство называется jobs
+    
     jobs = relationship("Job", secondary=job_location, back_populates="locations")
 
 
@@ -34,7 +34,7 @@ class Skill(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
 
-    # У навыка есть список вакансий
+    
     jobs = relationship("Job", secondary=job_skill, back_populates="skills")
 
 
@@ -47,6 +47,6 @@ class Job(Base):
     salary = Column(Integer)
     remote = Column(Boolean, default=False)
 
-    # У вакансии есть список локаций и навыков
+    
     locations = relationship("Location", secondary=job_location, back_populates="jobs")
     skills = relationship("Skill", secondary=job_skill, back_populates="jobs")
